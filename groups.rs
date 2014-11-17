@@ -9,35 +9,35 @@ extern crate operators;
 use sets::*;
 use operators::*;
 
-pub trait Magma<Self, Op: Fn<(Self,Self),Self>>: Set {
+pub trait Magma<S: Set>: Fn<(S,S),S> {
 	/*
 	 * requires an operator
 	 * (M x M) -> M
 	 */
 }
 
-pub trait Semigroup<Self, Op: IsAssociative<Self,Self,Self>>: Magma<Self, Op> {
+pub trait Semigroup<S: Set>: Magma<S> + IsAssociative<S,S,S> {
 }
 
-pub trait Monoid<Self, Op>: Semigroup<Self, Op> + HasIdentity<Self, Op> {
+pub trait Monoid<S: Set>: Semigroup<S> + HasIdentity<S> {
 }
 
-pub trait Quasigroup<Self, Op: IsLeftInvertible<Self,Self,Self> + IsRightInvertible<Self,Self,Self>>:
-	Magma<Self, Op>
+pub trait Quasigroup<S:Set>: Magma<S> +
+	IsLeftInvertible<S,S,S> + IsRightInvertible<S,S,S>
 {
 }
 
-pub trait Loop<Self, Op>: Quasigroup<Self, Op> + HasIdentity<Self, Op> {
+pub trait Loop<S:Set>: Quasigroup<S> + HasIdentity<S> {
 }
 
-pub trait Group<Self, Op: IsLeftInvertible<Self, Self, Self> + IsRightInvertible<Self, Self, Self>>:
-	Monoid<Self, Op> + HasInverse<Self>
+pub trait Group<S:Set>: Monoid<S> + HasInverse<S> +
+	IsLeftInvertible<S,S,S> + IsRightInvertible<S,S,S>
 {
 	// TODO: remove since HasInverse
-	fn inverse(x: Self) -> Self;
+	fn invert(x: S) -> S;
 }
 
-pub trait AbelianGroup<Self, Op: IsInvertible<Self,Self>>: Group<Self, Op> {
+pub trait AbelianGroup<S:Set>: Group<S> + IsInvertible<S,S> {
 }
 
 struct MyMagma;

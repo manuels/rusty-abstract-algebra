@@ -1,15 +1,19 @@
 #![crate_type = "lib"]
 #![crate_name = "sets"]
 
-pub trait Set: PartialEq {}
+pub trait Set {}
 
-pub trait HasInverse<Self> {
-	fn inverse(x: Self) -> Self;
+pub trait HasInverse<S> {
+	fn inverse(x: S) -> S;
 }
 
-pub trait HasIdentity<Self, Op: Fn<(Self,Self),Self>> {
+pub trait HasIdentity<S> {
 	/*
 	 * requires a Identity element
 	 */
-	fn identity() -> Self;
+	fn identity() -> S;
+}
+
+pub trait PartiallyOrdered {
+	fn less_or_equal(&self, other: Self) -> bool;
 }
