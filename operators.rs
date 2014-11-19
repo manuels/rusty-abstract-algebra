@@ -56,7 +56,13 @@ pub trait DistributesOver<A,B,C, Op: Fn<(A,B),C>>: Fn<(A,B),C> {
 	/*
 	 * Self(a, Op(b, c)) = Op(Self(a, b), Self(a, c))
 	 * Self(Op(b, c), a) = Op(Self(b, a), Self(c, a))
-     */
+	 */
+}
+
+pub trait CompatibleWith<A,X, Op1: Fn<(A,X),X>, Op2:Fn<(A,A),A>>: Fn<(X,X),X> {
+	/*
+	 * Self(Op1(a,x), Op1(b, y)) = Op1(Op2(a,b), Self(x,y))
+	 */
 }
 
 pub trait LeftAnnihilatesIdentityOf<S, Op: Fn<(S,S),S> + HasIdentity<S>> {

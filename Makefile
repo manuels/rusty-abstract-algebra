@@ -4,7 +4,8 @@ FILES: \
 	libgroups.rlib \
 	librings.rlib \
 	liblattices.rlib \
-	libmodules.rlib
+	libmodules.rlib	\
+	libalgebra.rlib
 
 all: $(FILES)
 	#rustc -o prog foo.rlib bar.rlib
