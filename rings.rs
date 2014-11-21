@@ -14,37 +14,32 @@ use groups::*;
 pub trait Semiring<S:Set,
 		Add: Monoid<S> + HasIdentity<S> + IsCommutative<S, S>,
 		Mul: Monoid<S> + HasIdentity<S> +
-			DistributesOver<S,S,S,Add> +
+			DistributesOver<S,S,Add> +
 			AnnihilatesIdentityOf<S,Add>>:
-	Tuple2<Add, Mul>
 {
 }
 
 pub trait Ring<S:Set,
 		Add: AbelianGroup<S>,
-		Mul: Monoid<S> + DistributesOver<S,S,S,Add>>:
-	Tuple2<Add,Mul>
+		Mul: Monoid<S> + DistributesOver<S,S,Add>>:
 {
 }
 
 pub trait Rng<S:Set,
 		Add: AbelianGroup<S>,
-		Mul: Semigroup<S> + DistributesOver<S,S,S,Add>>:
-	Tuple2<Add,Mul>
+		Mul: Semigroup<S> + DistributesOver<S,S,Add>>:
 {
 }
 
 pub trait RightNearRing<S:Set,
 		Add: Group<S>,
-		Mul: Semigroup<S> + RightDistributesOver<S,S,S,Add>>:
-	Tuple2<Add,Mul>
+		Mul: Semigroup<S> + RightDistributesOver<S,S,Add>>:
 {
 }
 
 pub trait LeftNearRing<S:Set,
 		Add: Group<S>,
-		Mul: Semigroup<S> + LeftDistributesOver<S,S,S,Add>>:
-	Tuple2<Add,Mul>
+		Mul: Semigroup<S> + LeftDistributesOver<S,S,Add>>:
 {
 }
 

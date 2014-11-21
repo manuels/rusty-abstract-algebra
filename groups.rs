@@ -33,27 +33,7 @@ pub trait Loop<S:Set>: Quasigroup<S> + HasIdentity<S> {
 pub trait Group<S:Set>: Monoid<S> + HasInverse<S> +
 	IsLeftInvertible<S,S,S> + IsRightInvertible<S,S,S>
 {
-	// TODO: remove since HasInverse
-	fn invert(x: S) -> S;
 }
 
 pub trait AbelianGroup<S:Set>: Group<S> + IsInvertible<S,S> {
-}
-
-struct MyMagma;
-impl MyMagma {
-	fn new() -> MyMagma {
-		return MyMagma;
-	}
-}
-
-struct MyOp;
-impl Fn<(MyMagma,MyMagma),MyMagma> for MyOp {
-	extern "rust-call" fn call(&self, args: (MyMagma,MyMagma)) -> MyMagma {
-		return MyMagma::new();
-	}
-}
-
-fn main() {
-
 }

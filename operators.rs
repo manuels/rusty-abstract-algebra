@@ -40,19 +40,21 @@ pub trait IsInvertible<A,C>: Fn<(A,A),C> + IsCommutative<A,C> {
 	fn invert(a: A, b: A) -> C;
 }
 
-pub trait LeftDistributesOver<A,B,C, Op: Fn<(A,B),C>>: Fn<(A,B),C> {
+pub trait LeftDistributesOver<A,B, Op: Fn<(B,B),B>>: Fn<(A,B),B> {
 	/*
 	 * Self(a, Op(b, c)) = Op(Self(a, b), Self(a, c))
 	 */
 }
 
-pub trait RightDistributesOver<A,B,C, Op: Fn<(A,B),C>>: Fn<(A,B),C> {
+pub trait RightDistributesOver<A,B, Op: Fn<(A,A),A>>: Fn<(A,B),B> {
 	/*
-	 * Self(Op(b, c), a) = Op(Self(b, a), Self(c, a))
+	 * Self(Op1(b, c), a) = Op2(Self(b, a), Self(c, a))
+
 	 */
 }
 
-pub trait DistributesOver<A,B,C, Op: Fn<(A,B),C>>: Fn<(A,B),C> {
+pub trait DistributesOver<A,B, Op: Fn<(A,B),B>>: Fn<(A,B),B> +
+	LeftDistributesOver<A,B, Op> + RightDistributesOver<A,B, Op> {
 	/*
 	 * Self(a, Op(b, c)) = Op(Self(a, b), Self(a, c))
 	 * Self(Op(b, c), a) = Op(Self(b, a), Self(c, a))

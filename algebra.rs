@@ -16,7 +16,7 @@ use rings::*;
 use module::*;
 
 pub trait BilinearProduct<V, S, VAdd, SMul, SVMul>:
-	Fn<(V,V),V> + DistributesOver<V,V,V,VAdd> + CompatibleWith<S,V, SVMul, SMul>
+	Fn<(V,V),V> + DistributesOver<V,V,VAdd> + CompatibleWith<S,V, SVMul, SMul>
 {
 }
 
@@ -24,5 +24,4 @@ pub trait Algebra<S, V, SAdd, SMul, VAdd, SVMul,
 		K: Field<S, SAdd, SMul>,
 		A: VectorSpace<S, V, SAdd, SMul, VAdd, K, SVMul>,
 		VMul: BilinearProduct<V,S,VAdd,SMul,SVMul>>:
-	Tuple3<K,A,VMul> {
-}
+{}

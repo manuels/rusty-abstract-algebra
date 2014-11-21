@@ -21,22 +21,14 @@ pub trait ScalarMultiplier<R:Set,M:Set>:
 pub trait LeftModule<R,M, RAdd, RMul,
 		MAdd:    AbelianGroup<M>,
 		RAddMul: CommutativeRing<R, RAdd, RMul>,
-		RMMul:   ScalarMultiplier<R,M> + LeftDistributesOver<R,M,M,MAdd>>:
-	Tuple3<
-		RMMul,
-		MAdd,
-		RAddMul>
+		RMMul:   ScalarMultiplier<R,M> + LeftDistributesOver<R,M,MAdd>>:
 {
 }
 
 pub trait RightModule<R,M, RAdd, RMul,
 		MAdd:    AbelianGroup<M>,
 		RAddMul: CommutativeRing<R, RAdd, RMul>,
-		RMMul:   ScalarMultiplier<R,M> + RightDistributesOver<R,M,M,MAdd>>:
-	Tuple3<
-		RMMul,
-		MAdd,
-		RAddMul>
+		RMMul:   ScalarMultiplier<R,M> + RightDistributesOver<R,M,MAdd>>:
 {
 }
 
@@ -47,18 +39,14 @@ pub trait Module<R,M, RAdd, RMul, MAdd, RAddMul, RMMul>:
 }
 
 pub trait OmegaGroup<S, G: Group<S>,
-		Omega: DistributesOver<Omega,S,S,G>>
+		Omega: DistributesOver<Omega,S,G>>
 {
 }
 
 pub trait VectorSpace<R,M, RAdd, RMul,
 		MAdd:    AbelianGroup<M>,
 		RAddMul: Field<R, RAdd, RMul>,
-		RMMul:   ScalarMultiplier<R,M> + RightDistributesOver<R,M,M,MAdd>
-			+ LeftDistributesOver<R,M,M,RAdd>>:
-	Tuple3<
-		RMMul,
-		MAdd,
-		RAddMul>
+		RMMul:   ScalarMultiplier<R,M> + RightDistributesOver<R,M,RAdd>
+			+ LeftDistributesOver<R,M,MAdd>>:
 {
 }
