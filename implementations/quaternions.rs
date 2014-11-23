@@ -2,7 +2,6 @@
 #![crate_name = "quaternions"]
 
 #![feature(globs)]
-#![feature(overloaded_calls)]
 
 extern crate sets;
 extern crate operators;
@@ -17,6 +16,8 @@ use groups::*;
 use rings::*;
 use module::*;
 use algebra::*;
+
+use std::num::{Num, NumCast};
 
 pub struct Quaternion<V:Num> {
 	r: V,

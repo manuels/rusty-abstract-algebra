@@ -1,5 +1,5 @@
 #![feature(globs)]
-#![feature(overloaded_calls)]
+#![feature(unboxed_closures)]
 
 extern crate quaternions;
 
