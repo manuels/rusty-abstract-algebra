@@ -42,7 +42,6 @@ impl<Scalar:Num> Quaternion<Scalar> {
 pub struct SAdd<S>;
 impl<S:Num+Set> IsAssociative<S,S,S> for SAdd<S> {}
 impl<S:Num+Set> IsCommutative<S,S> for SAdd<S> {}
-impl<S:Num+Set> Magma<S> for SAdd<S> {}
 impl<S:Num+Set> Monoid<S> for SAdd<S> {}
 impl<S:Num+Set> Semigroup<S> for SAdd<S> {}
 impl<S:Num+Set> Group<S> for SAdd<S> {}
@@ -90,7 +89,6 @@ impl<S:Num+Set> Fn<(S,S),S> for SMul<S> {
 	}
 }
 
-impl<S:Num+Set> Magma<S> for SMul<S> {}
 impl<S:Num+Set> Monoid<S> for SMul<S> {}
 impl<S:Num+Set> Semigroup<S> for SMul<S> {}
 impl<S:Num+Set> IsAssociative<S,S,S> for SMul<S> {}
@@ -127,7 +125,6 @@ impl<S:Num+Set> IsInvertible<S,S> for SMul<S> {
 }
 
 pub struct VAdd<V>;
-impl<V:Num> Magma<Quaternion<V>> for VAdd<V> {}
 impl<V:Num> Monoid<Quaternion<V>> for VAdd<V> {}
 impl<V:Num> Semigroup<Quaternion<V>> for VAdd<V> {}
 impl<V:Num> Group<Quaternion<V>> for VAdd<V> {}

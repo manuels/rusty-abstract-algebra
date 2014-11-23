@@ -20,4 +20,5 @@ lib%.rlib: %.rs
 
 clean:
 	rm -f *.rlib
-	rm -f */*.rlib	
+	rm -f */*.rlib
+	rm -f */test

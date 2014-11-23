@@ -19,6 +19,8 @@ pub trait Magma<S: Set>: Fn<(S,S),S> {
 pub trait Semigroup<S: Set>: Magma<S> + IsAssociative<S,S,S> {
 }
 
+impl<G:Semigroup<S>, S:Set> Magma<S> for G {}
+
 pub trait Monoid<S: Set>: Semigroup<S> + HasIdentity<S> {
 }
 
